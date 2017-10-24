@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<typeAliases>
+        &lt;!&ndash;
+        通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean,
+        并且默认设置一个别名，默认的名字为： javabean 的首字母小写的非限定类名来作为它的别名。
+        也可在javabean 加上注解@Alias 来自定义别名， 例如： @Alias(user)
+        <package name="com.dy.entity"/>
+         &ndash;&gt;
+        <typeAlias alias="role" type="pojo.Role"/>
+    </typeAliases>-->
+    <!--之定义别名 -->
+    <typeAliases>
+    <package name="pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" >
+                <property name="autoCommit" value="false"/>
+            </transactionManager>
+
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/myBlog" />
+                <property name="username" value="root" />
+                <property name="password" value="123456" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!--MAPPING 文件路径配置-->
+    <mappers>
+        <mapper resource="Mapper.xml"/>
+    </mappers>
+</configuration>
